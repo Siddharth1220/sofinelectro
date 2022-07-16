@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+<script src="jquery.min.js"></script>
+<link rel="stylesheet" href="bootstrap.min.css">
+  <script src="jquery1.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <link rel="stylesheet" href="font-awesome.min.css">
+  <link rel="stylesheet" href="jquery-confirm.min.css">
+  <script src="jquery-confirm.min.js"></script>
+</head>
+
+<style>
+  body{
+    margin: 0;
+    padding: 0;
+    background-color: #4f5a6b;
+    color: #f5f7fa;
+
+
+  }
+  
+  </style>
+<body>
+
+  <div class="parent-container d-flex">
+    <div class="row">
+  
+  
+<script>
+  function deletein(val)
+  {
+    $.confirm({
+    buttons: {
+        
+        Delete: function () {
+                var id = val;
+                var mysql      = require('mysql');
+                var connection = mysql.createConnection({
+                      host     : 'localhost',
+                      user     : 'root',
+                      password : null,
+                      database : 'pro'
+                      });
+                connection.connect();
+                $sql = `DELETE FROM list WHERE id= '${id}'`;
+                connection.query($sql) 
+                location.reload();
+        },
+        cancel: {
+            text: 'cancel', 
+            action: function () {
+                $.alert('cancelled');
+            }
+        }
+    }
+});
+  }
+  </script>
+
+<script>
+
+            $(document).ready(function() {
+                $("#serchdata").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function() {
+                        $(this).toggle($(this).text()
+                        .toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+            
+            
+</script>
+
+<div>
+          
+
+
+
+          <br>
+          <br>
+
+
+          
+          <div class="col-lg-4">
+
+          <form id="form" style="position: flex;">
+            <div class="form-group">
+            <label style="margin-left: 50px; margin-bottom: 10px;">Part No. </label>
+            <input id="partno" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+            </div>
+            
+            <div class="form-group">
+              <label style="margin-left: 50px; margin-bottom: 10px;">Product Name  : </label>
+             <input id="productname" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required >
+              
+            </div>
+
+            <div class="form-group">
+              <label style="margin-left: 50px; margin-bottom: 10px;">Supplier Name : </label>
+               <input id="suppliername" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+              
+              </div>
+
+              <div class="form-group">
+                <label style="margin-left: 50px; margin-bottom: 10px;">Unit : </label>
+                <input id="unit" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+                
+                </div>
+            
+                <div class="form-group">
+
+                  <label style="margin-left: 50px; margin-bottom: 10px;">Grade : </label>
+                 <input id="grade" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+
+                </div>
+
+                <div class="form-group">
+                  <label style="margin-left: 50px; margin-bottom: 10px;">Grade Show: </label>
+                  <input id="gradeshow" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+                  
+                  </div>
+                  <div class="form-group">
+                    <label style="margin-left: 50px; margin-bottom: 10px;">Casting Weight : </label>
+                     <input id="castingweight"  class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+                    
+                    </div>
+
+                    <div class="form-group">
+                      <label style="margin-left: 50px; margin-bottom: 10px;">Finished Weight : </label>
+                       <input id="finishedweight" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+                      
+                      </div>
+
+                      <div class="form-group">
+                        <label style="margin-left: 50px; margin-bottom: 10px;">Waste Scrap Weight : </label>
+                         <input id="wastescrapweight" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+                        
+                        </div>
+            
+                        <div class="form-group">
+                          
+                          <label style="margin-left: 50px; margin-bottom: 10px;">Runner Riser :</label>
+                          <input id="runnerriser" class="form-control" style="width: 300px ; background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+                        </div>
+            
+
+            <input type="hidden" value="" id="updateid">
+            <button type="submit" class="btn btn-success" id="submitbtn" class="form-control" style="width: 100px ; height: 35px; margin-left: 60px; margin-top: 30px;">Add</button>
+            <button type="clearin" class="btn btn-warning " id="clearbtn" style="width: 100px ; height: 35px; margin-left: 35px; margin-top: 30px;" onclick="relodepage()">clear</button>
+
+
+
+          
+
+            </form>
+
+            <br>
+            <br>
+            
+            
+              
+              </div>
+              
+  <script>
+    function relodepage()
+    {
+      location.reload();   
+      localStorage.setItem("serchdata", ""); 
+      }
+
+  </script>
+
+
+
+  <script type="text/javascript">
+       function updatein(id){
+        document.getElementById("updateid").value = id;
+        document.getElementById("submitbtn").innerHTML = 'Update';
+        var mysql      = require('mysql');
+        var connection = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'root',
+        password : null,
+        database : 'pro'
+        });
+ 
+  connection.connect();
+
+  $sql = `SELECT * FROM list WHERE id = ${id}`
+  connection.query($sql, function (error, results, fields){
+           if (error) throw error;
+  
+        var table = document.getElementById('myTable')
+        document.getElementById("partno").value = results[0].partno;
+        document.getElementById("productname").value = results[0].productname;
+        document.getElementById("suppliername").value = results[0].suppliername;
+        document.getElementById("unit").value = results[0].unit;
+        document.getElementById("grade").value = results[0].grade;
+        document.getElementById("gradeshow").value = results[0].gradeshow;
+        document.getElementById("castingweight").value = results[0].castingweight;
+        document.getElementById("finishedweight").value = results[0].finishedweight;
+        document.getElementById("wastescrapweight").value = results[0].wastescrapweight;
+        document.getElementById("runnerriser").value = results[0].runnerriser;  
+        }
+   
+
+   );
+  
+ connection.end();
+}  
+</script>
+
+
+
+  <script type="text/javascript">
+       function del(val){
+          
+      }
+  </script>
+
+
+
+  <script>
+    $("#form").submit(function(event)
+    {
+      
+      var updateId = $("#updateid").val();
+      
+      var partno1 = $("#partno").val();
+      var productname1 = $("#productname").val();
+      var suppliername1 = $("#suppliername").val();
+      var unit1 = $("#unit").val();
+      var grade1 = $("#grade").val();
+      var gradeshow1 = $("#gradeshow").val();
+      var castingweight1 = $("#castingweight").val();
+      var finishedweight1 = $("#finishedweight").val();
+      var wastescrapweight1 = $("#wastescrapweight").val();
+      var runnerriser1 = $("#runnerriser").val();
+      if(updateId != '')
+      {
+        var mysql = require('mysql');
+      var connection = mysql.createConnection({
+                host     : 'localhost',
+                user     : 'root',
+                password : null,
+                database : 'pro'
+                });
+            connection.connect();
+            $sql =  `UPDATE list SET partno = '${partno1}', productname = '${productname1}',suppliername = '${suppliername1}',productname = '${productname1}',suppliername = '${suppliername1}',unit = '${unit1}',grade ='${grade1}', gradeshow = '${gradeshow1}',castingweight = '${castingweight1}' ,finishedweight = '${finishedweight1}',wastescrapweight = '${wastescrapweight1}',runnerriser = '${runnerriser1}' WHERE id = '${updateId}';`
+            connection .query($sql)
+            // alert($sql)
+          }
+      else
+      {
+      var mysql = require('mysql');
+      var connection = mysql.createConnection({
+                host     : 'localhost',
+                user     : 'root',
+                password : null,
+                database : 'pro'
+                });
+            connection.connect();
+      $sql = `INSERT INTO list(partno, productname, suppliername, unit, grade, gradeshow, castingweight, finishedweight , wastescrapweight , runnerriser) VALUES ('${partno1}','${productname1}','${suppliername1}','${unit1}','${grade1}','${gradeshow1}','${castingweight1}','${finishedweight1}','${wastescrapweight1}','${runnerriser1}')`;
+    
+      connection.query($sql) 
+      alert("Data submited")
+      }
+    })
+
+  </script>
+
+  <div class="col-lg-8">
+
+    <form id="search" class="form-group">
+              <input type="text" placeholder="Search..." name="search" id="serchdata" style="width: 400px ; background-color: #b8b9ba; color: #316191;" class="form-control">
+    </form>
+
+<table class="table">
+  <thead class="bg-transparent">
+    <tr  class="header">
+      <th>part No.</th>
+      <th>product name</th>
+      <th>supplier name</th>
+      <th>unit</th>
+      <th>grade</th>
+      <th>grade show</th>
+      <th>casting weight</th>
+      <th>finished weight</th>
+      <th>waste scrap weight</th>
+      <th>runner riser</th>
+      <th colspan="2">action</th>
+  </tr>
+    </thead>
+  
+
+  <tbody id="myTable">
+    
+      
+  </tbody>
+</table>
+
+
+<script>
+
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : null,
+  database : 'pro'
+});
+ 
+connection.connect();
+$serc = localStorage.getItem("serchdata");
+
+$sql = 'SELECT `id`, `partno`, `productname`, `suppliername`, `unit`, `grade`, `gradeshow`, `castingweight`, `finishedweight`, `wastescrapweight`, `runnerriser` FROM `list`';
+
+
+
+
+
+connection.query($sql, function (error, results, fields) {
+  if (error) throw error;
+  
+  var table = document.getElementById('myTable')
+
+  for (var i = 0; i < results.length; i++)
+            {
+			var row = `
+              <tr>
+							<td>${results[i].partno}</td>
+              <td>${results[i].productname}</td>
+							<td>${results[i].suppliername}</td>
+              <td>${results[i].unit}</td>
+							<td>${results[i].grade}</td>
+              <td>${results[i].gradeshow}</td>
+							<td>${results[i].castingweight}</td>
+              <td>${results[i].finishedweight}</td>
+							<td>${results[i].wastescrapweight}</td>
+              <td>${results[i].runnerriser}</td>
+              <td>
+                <input type="button" value="Edit" class="btn btn-primary" onclick="updatein(${results[i].id})">
+                </td>
+              <td>
+                 <input type="button" value="Delete" class="btn btn-danger" onclick="deletein(${results[i].id})">
+                </td>
+							</tr>
+      
+              
+              `
+			table.innerHTML += row
+
+
+		    }
+	    }
+   
+
+  );
+ 
+connection.end();
+
+
+</script>
+
+
+
+<script>if (window.module) module = window.module;</script>
+  </div>
+
+
+
+</div>
+</div>
+
+
+</body>
+</html>
+
+ 

@@ -1,0 +1,33 @@
+{
+  "name": "Shivwebservice",
+  "version": "1.0.0",
+  "description": "Simple Node.js app",
+  "main": "main.js",
+  "scripts": {
+    "ankit": "electron .",
+    "siddharth": "nodemon --exec electron .",
+    "buid": "electron-packager ."
+  },
+  "repository": "https://github.com/Tony-Vaniya/sofinelectro.git",
+  "keywords": [
+    "Electron",
+    "Node",
+    "Template",
+    "Hackathon"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "bootstrap": "^4.6.1",
+    "jquery": "^3.6.0",
+    "mysql": "github:mysqljs/mysql",
+    "nodemon": "^2.0.19",
+    "smalltalk": "^4.1.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.27.10",
+    "electron": "^6.1.12",
+    "electron-packager": "^15.5.1",
+    "gulp": "^4.0.2"
+  }
+}
