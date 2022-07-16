@@ -7,6 +7,7 @@
   <script src="jquery1.min.js"></script>
   <script src="bootstrap.min.js"></script>
   <link rel="stylesheet" href="font-awesome.min.css">
+  <link rel="stylesheet" href="fa.min.css">
   <link rel="stylesheet" href="jquery-confirm.min.css">
   <script src="jquery-confirm.min.js"></script>
 </head>
@@ -15,10 +16,26 @@
   body{
     margin: 0;
     padding: 0;
-    background-color: #4f5a6b;
-    color: #f5f7fa;
+    background-color: #d7e5f2;
+    color: #000; 
+    
+  }
+  .setimgup
+  {
+    background-image: url("edit.png");
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+  }
 
-
+  .setimgde
+  {
+    background-image: url("del.png");
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
   }
   
   </style>
@@ -32,7 +49,9 @@
   function deletein(val)
   {
     $.confirm({
+    theme: 'dark',
     buttons: {
+        
         
         Delete: function () {
                 var id = val;
@@ -48,8 +67,9 @@
                 connection.query($sql) 
                 location.reload();
         },
+        
+        
         cancel: {
-            text: 'cancel', 
             action: function () {
                 $.alert('cancelled');
             }
@@ -58,6 +78,26 @@
 });
   }
   </script>
+
+  <script>
+    function dberror()
+    {
+
+      $.confirm({
+        type: 'red',
+        theme: 'dark',
+        title: 'error',
+        content: 'connect database properly',
+      buttons: {
+        Ok: function () {
+          location.reload(); 
+        },
+        
+        
+    }
+});
+}
+    </script>
 
 <script>
 
@@ -84,66 +124,66 @@
 
 
           
-          <div class="col-lg-4">
+          <div class="col-lg-3">
 
-          <form id="form" style="position: flex;">
+          <form id="form" style="position: flex; ">
             <div class="form-group">
-            <label style="margin-left: 50px; margin-bottom: 10px;">Part No. </label>
-            <input id="partno" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+            <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100; margin-top: 0; height: 10px;" >Part No. </label>
+            <input id="partno" class="form-control" style="width: 200px ; height: 25px; background-color: #fff; color: #316191; margin-left: 50px; margin-bottom: 0;" required>
             </div>
             
             <div class="form-group">
-              <label style="margin-left: 50px; margin-bottom: 10px;">Product Name  : </label>
-             <input id="productname" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required >
+              <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100;margin-top: 0;">Product Name  : </label>
+             <input id="productname" class="form-control" style="width: 200px; height: 25px;  background-color: #fff; color: #316191; margin-left: 50px;" required >
               
             </div>
 
             <div class="form-group">
-              <label style="margin-left: 50px; margin-bottom: 10px;">Supplier Name : </label>
-               <input id="suppliername" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+              <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100">Supplier Name : </label>
+               <input id="suppliername" class="form-control" style="width: 200px; height: 25px;  background-color: #fff; color: #316191; margin-left: 50px;" required>
               
               </div>
 
               <div class="form-group">
-                <label style="margin-left: 50px; margin-bottom: 10px;">Unit : </label>
-                <input id="unit" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+                <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100">Unit : </label>
+                <input id="unit" class="form-control" style="width: 200px; height: 25px; background-color: #fff; color: #316191; margin-left: 50px;" required>
                 
                 </div>
             
                 <div class="form-group">
 
-                  <label style="margin-left: 50px; margin-bottom: 10px;">Grade : </label>
-                 <input id="grade" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+                  <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100">Grade : </label>
+                 <input id="grade" class="form-control" style="width: 200px; height: 25px; background-color: #fff; color: #316191; margin-left: 50px;" required>
 
                 </div>
 
                 <div class="form-group">
-                  <label style="margin-left: 50px; margin-bottom: 10px;">Grade Show: </label>
-                  <input id="gradeshow" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+                  <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100">Grade Show: </label>
+                  <input id="gradeshow" class="form-control" style="width: 200px; height: 25px; background-color: #fff; color: #316191; margin-left: 50px;" required>
                   
                   </div>
                   <div class="form-group">
-                    <label style="margin-left: 50px; margin-bottom: 10px;">Casting Weight : </label>
-                     <input id="castingweight"  class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+                    <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100">Casting Weight : </label>
+                     <input id="castingweight"  class="form-control" style="width: 200px; height: 25px; background-color: #fff; color: #316191; margin-left: 50px;" required>
                     
                     </div>
 
                     <div class="form-group">
-                      <label style="margin-left: 50px; margin-bottom: 10px;">Finished Weight : </label>
-                       <input id="finishedweight" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+                      <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100">Finished Weight : </label>
+                       <input id="finishedweight" class="form-control" style="width: 200px; height: 25px; background-color: #fff; color: #316191; margin-left: 50px;" required>
                       
                       </div>
 
                       <div class="form-group">
-                        <label style="margin-left: 50px; margin-bottom: 10px;">Waste Scrap Weight : </label>
-                         <input id="wastescrapweight" class="form-control" style="width: 300px ;  background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+                        <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100">Waste Scrap Weight : </label>
+                         <input id="wastescrapweight" class="form-control" style="width: 200px ; height: 25px;  background-color: #fff; color: #316191; margin-left: 50px;" required>
                         
                         </div>
             
                         <div class="form-group">
                           
-                          <label style="margin-left: 50px; margin-bottom: 10px;">Runner Riser :</label>
-                          <input id="runnerriser" class="form-control" style="width: 300px ; background-color: #b8b9ba; color: #316191; margin-left: 50px;" required>
+                          <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100">Runner Riser :</label>
+                          <input id="runnerriser" class="form-control" style="width: 200px ; height: 25px; background-color: #fff; color: #316191; margin-left: 50px;" required>
                         </div>
             
 
@@ -272,10 +312,10 @@
 
   </script>
 
-  <div class="col-lg-8">
+  <div class="col-lg-9">
 
     <form id="search" class="form-group">
-              <input type="text" placeholder="Search..." name="search" id="serchdata" style="width: 400px ; background-color: #b8b9ba; color: #316191;" class="form-control">
+              <input type="text" placeholder="Search..." name="search" id="serchdata" style="width: 400px ; background-color: #fff; color: #316191;" class="form-control">
     </form>
 
 <table class="table">
@@ -323,11 +363,11 @@ $sql = 'SELECT `id`, `partno`, `productname`, `suppliername`, `unit`, `grade`, `
 
 
 connection.query($sql, function (error, results, fields) {
-  if (error) throw error;
+  if (error) throw dberror();
   
   var table = document.getElementById('myTable')
 
-  for (var i = 0; i < results.length; i++)
+  for ( var i = results.length; i--;)
             {
 			var row = `
               <tr>
@@ -342,10 +382,10 @@ connection.query($sql, function (error, results, fields) {
 							<td>${results[i].wastescrapweight}</td>
               <td>${results[i].runnerriser}</td>
               <td>
-                <input type="button" value="Edit" class="btn btn-primary" onclick="updatein(${results[i].id})">
+                <button class="setimgup" onclick="updatein(${results[i].id})"></button>
                 </td>
               <td>
-                 <input type="button" value="Delete" class="btn btn-danger" onclick="deletein(${results[i].id})">
+                <button class="setimgde" onclick="deletein(${results[i].id})"></button>
                 </td>
 							</tr>
       

@@ -14,7 +14,12 @@ function createWindow () {
     }
   })
 
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile('loading.html')
+  
+  setTimeout(() => mainWindow.loadFile('index.html'), 10000)
+
+
+
 
   mainWindow.on('closed', function () {
     mainWindow = null
