@@ -7,7 +7,7 @@ function createWindow () {
     width: 1300,
     height: 700,
     autoHideMenuBar: true,
-    frame: true,
+    frame: false,
     icon:'logo.png',
     webPreferences: {
       nodeIntegration: true
@@ -16,7 +16,7 @@ function createWindow () {
 
   mainWindow.loadFile('loading.html')
   
-  setTimeout(() => mainWindow.loadFile('index.html'), 10000)
+  setTimeout(() => mainWindow.loadFile('index.html'), 100)
 
 
 

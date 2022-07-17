@@ -23,17 +23,16 @@
   .setimgup
   {
     background-image: url("edit.png");
-    width: 30px;
-    height: 30px;
-    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
     background-size: 100% 100%; 
   }
 
   .setimgde
   {
     background-image: url("del.png");
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     background-repeat: no-repeat;
     background-size: 100% 100%; 
   }
@@ -66,14 +65,10 @@
                 $sql = `DELETE FROM list WHERE id= '${id}'`;
                 connection.query($sql) 
                 location.reload();
-        },
-        
-        
-        cancel: {
-            action: function () {
-                $.alert('cancelled');
-            }
         }
+        
+        
+
     }
 });
   }
@@ -144,16 +139,21 @@
               
               </div>
 
-              <div class="form-group">
-                <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100">Unit : </label>
-                <input id="unit" class="form-control" style="width: 200px; height: 25px; background-color: #fff; color: #316191; margin-left: 50px;" required>
-                
-                </div>
-            
-                <div class="form-group">
+              <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100"> Unit :</label> 
+              <br> 
 
-                  <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100">Grade : </label>
-                 <input id="grade" class="form-control" style="width: 200px; height: 25px; background-color: #fff; color: #316191; margin-left: 50px;" required>
+
+              <select id="unit" class="form-control" style="width: 200px; height: 30px; background-color: #fff; color: #316191; margin-left: 50px;"  required>  
+              
+
+              </select>  
+
+              <div class="form-group">
+
+                  <label style="margin-left: 50px; margin-bottom: 0px; font-weight: 100; margin-top:10px;">Grade : </label>
+              <select id="grade" class="form-control" style="width: 200px; height: 30px; background-color: #fff; color: #316191; margin-left: 50px;"  required>  
+             
+              </select>
 
                 </div>
 
@@ -188,8 +188,8 @@
             
 
             <input type="hidden" value="" id="updateid">
-            <button type="submit" class="btn btn-success" id="submitbtn" class="form-control" style="width: 100px ; height: 35px; margin-left: 60px; margin-top: 30px;">Add</button>
-            <button type="clearin" class="btn btn-warning " id="clearbtn" style="width: 100px ; height: 35px; margin-left: 35px; margin-top: 30px;" onclick="relodepage()">clear</button>
+            <button type="submit" class="btn btn-success" id="submitbtn" class="form-control" style="width: 80px ; height: 30px; margin-left: 50px; margin-top: 0px;">Add</button>
+            <button type="clearin" class="btn btn-warning " id="clearbtn" style="width: 80px ; height: 30px; margin-left: 10px; margin-top: 0px;" onclick="relodepage()">clear</button>
 
 
 
@@ -292,6 +292,7 @@
             $sql =  `UPDATE list SET partno = '${partno1}', productname = '${productname1}',suppliername = '${suppliername1}',productname = '${productname1}',suppliername = '${suppliername1}',unit = '${unit1}',grade ='${grade1}', gradeshow = '${gradeshow1}',castingweight = '${castingweight1}' ,finishedweight = '${finishedweight1}',wastescrapweight = '${wastescrapweight1}',runnerriser = '${runnerriser1}' WHERE id = '${updateId}';`
             connection .query($sql)
             // alert($sql)
+            location.reload();   
           }
       else
       {
@@ -392,6 +393,95 @@ connection.query($sql, function (error, results, fields) {
               
               `
 			table.innerHTML += row
+
+
+		    }
+	    }
+   
+
+  );
+ 
+connection.end();
+
+
+</script>
+
+
+
+<script>
+
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : null,
+  database : 'pro'
+});
+ 
+connection.connect();
+$serc = localStorage.getItem("serchdata");
+
+$sql = 'SELECT `id`, `unit`  FROM `unit`';
+
+
+
+
+
+connection.query($sql, function (error, results, fields) {
+  if (error) throw dberror();
+  
+  var table = document.getElementById('unit')
+
+  for ( var i = results.length; i--;)
+            {
+			var row = `
+              <option value = '${results[i].unit}'> ${results[i].unit} </option>             
+              `
+			unit.innerHTML += row
+
+
+		    }
+	    }
+   
+
+  );
+ 
+connection.end();
+
+
+</script>
+
+
+<script>
+
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : null,
+  database : 'pro'
+});
+ 
+connection.connect();
+$serc = localStorage.getItem("serchdata");
+
+$sql = 'SELECT `id`, `grade`  FROM `grade`';
+
+
+
+
+
+connection.query($sql, function (error, results, fields) {
+  if (error) throw dberror();
+  
+  var table = document.getElementById('grade')
+
+  for ( var i = results.length; i--;)
+            {
+			var row = `
+              <option value = '${results[i].grade}'> ${results[i].grade} </option>             
+              `
+              grade.innerHTML += row
 
 
 		    }
